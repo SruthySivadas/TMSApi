@@ -13,7 +13,6 @@ from django.utils import timezone
 
 
 @api_view(['GET', 'POST'])
-@method_decorator(csrf_exempt, name='dispatch')
 def ticket_list(request):
     if request.method == 'GET':
         tickets = Ticket.objects.all()
@@ -28,7 +27,6 @@ def ticket_list(request):
         return Response(serializer.errors, status=400)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@method_decorator(csrf_exempt, name='dispatch')
 def ticket_detail(request, pk):
     try:
         ticket = Ticket.objects.get(pk=pk)
@@ -51,7 +49,6 @@ def ticket_detail(request, pk):
         return Response(status=204)
 
 @api_view(['GET', 'POST'])
-@method_decorator(csrf_exempt, name='dispatch')
 def employee_list(request):
     if request.method == 'GET':
         employees = Employee.objects.all()
@@ -66,7 +63,6 @@ def employee_list(request):
         return Response(serializer.errors, status=400)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@method_decorator(csrf_exempt, name='dispatch')
 def employee_detail(request, pk):
     try:
        employee = Employee.objects.get(pk=pk)
@@ -89,7 +85,6 @@ def employee_detail(request, pk):
         return Response(status=204)
 
 @api_view(['GET', 'POST'])
-@method_decorator(csrf_exempt, name='dispatch')
 def employee_roster_list(request):
     if request.method == 'GET':
         rosters = EmployeeRoster.objects.all()
@@ -111,7 +106,6 @@ def employee_roster_list(request):
         return Response(serializer.errors, status=400)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@method_decorator(csrf_exempt, name='dispatch')
 def employee_roster_detail(request, pk):
     try:
         roster = EmployeeRoster.objects.get(id=pk)
